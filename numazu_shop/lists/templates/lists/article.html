@@ -1,0 +1,32 @@
+<html>
+<head>
+</head>
+<body>
+	<h1>情報サイト</h1>
+	<h2><a href="{% url 'shop' article.shop.id %}">{{ article.shop.title }}</a></h2>
+	<div class="date">更新日時: {{ article.pub_date }}</div>
+	<div class="contents">
+		{{ article.text }}
+	</div>
+	<h3>ソース</h3>
+	<div class="link">
+		<a href="{{ article.src_url }}">{{ article.src_url }}</a>
+	</div>
+	<h3>画像</h3>
+	{% if article.image_url1 is not None %}
+	<img src="{{ article.image_url1 }}" width="50%" height="50%"/>
+	{% endif %}
+	{% if article.image_url2 is not None %}
+	<img src="{{ article.image_url2 }}" width="50%" height="50%"/>
+	{% endif %}
+	{% if article.image_url3 is not None %}
+	<img src="{{ article.image_url3 }}" width="50%" height="50%"/>
+	{% endif %}
+	{% if article.image_url4 is not None %}
+	<img src="{{ article.image_url4 }}" width="50%" height="50%"/>
+	{% endif %}
+
+	<hr />
+	<div class="link"><a href="{% url 'index' %}">目次に戻る</div>
+</body>
+</head>
