@@ -5,6 +5,7 @@
 後でdocker-compose化するつもりですが、それまで待ってね
 ```sh
 aptやyum等でmysql-serverかmariadb-serverとmysql-develかmariadb-develとgccとpython3-develをインストールして動かす
+https://qiita.com/deco/items/bfa125ae45c16811536a 見てmysqlのencodingの変更も必要 [mysql]も設定変更必要(無いと文字化けする)
 $ sudo systemctl start mariadb(かmysql)
 $ mysql -u root 
 パスワード変更(ROOTPASSWD, DBNAME, THISHOSTIP, YOURPASSWDは各自変更すること)
@@ -21,7 +22,7 @@ $ cd numazu_shop
 $ cp numazu_shop/settings.template.py numazu_shop/settings.py
 $ vim numazu_shop/settings.py
 SECRET_KEYを適当なものに変更
-本番で動かす場合DEBUGはFalse, ALLOWED_HOSTS = ['0.0.0.0']にする
+本番で動かす場合DEBUGはFalse, ALLOWED_HOSTS = ["*"]にする
 DBの部分は次のような感じにする(DBNAME, USERNAME, YOURPASSWD, HOSTNAME, PORTNUMBERは各自の環境に変えて下さい)
 DATABASES = {
     'default': {
@@ -40,4 +41,10 @@ DATABASES = {
 $ python3 manage.py migrate
 $ python3 manage.py runserver
 このホストの8000番にブラウザで繋げば表示されるはず
+```
+
+# uwsgiとの接続
+```sh
+$ sudo pip3 install uwsgi
+pipenvでないことに注意
 ```
