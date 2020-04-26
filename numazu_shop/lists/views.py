@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import Http404
+from django.views import generic
 
 from .models import Article, Shop
 
@@ -9,11 +10,13 @@ def index(request):
     return render(request, 'lists/index.html', {'latest_article_list': latest_article_list, 'shops': shops })
 
 
-def article(request, article_id):
-    article = get_object_or_404(Article, pk=article_id)
-    return render(request, 'lists/article.html', {'article': article })
+class ArticleView(generic.DetailView):
+    model = Article
+    template_name = 'lists/article.html'
 
 
-def shop(request, shop_id):
-    shop = get_object_or_404(Shop, pk=shop_id)
-    return render(request, 'lists/shop.html', {'shop': shop })
+class ShopView(generic.DetailView):
+    model = Shop
+    template_name = 'lists/shop.html'
+
+

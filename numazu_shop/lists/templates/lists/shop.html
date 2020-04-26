@@ -1,9 +1,16 @@
-<html>
-	<head></head>
-<body>
-	<h1>{{ shop.title }}</h1>
-	<div class="link">Link: <a href="{{ shop.link }}">{{ shop.link }}</a></div>
-	<div class="contents">{{ shop.desc }}</div>
-	<hr />
-	<div class="link"><a href="{% url 'index' %}">目次に戻る</div>
-</body>
+{% extends "base.html" %}
+
+{% block title %}お店: {{ shop.title }}{% endblock %}
+{% block description %}{{ shop.title }}{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">お店紹介</h1>
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="mb-3">{{ shop.title }}</h1>
+	        <div class="link">Link: <a href="{{ shop.link }}">{{ shop.link }}</a></div>
+	        <div class="contents">{{ shop.desc }}</div>
+	    </div>
+	</div>
+	<div class="link"><a href="{% url 'index' %}">目次に戻る</a></div>
+{% endblock %}
