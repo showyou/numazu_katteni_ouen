@@ -45,6 +45,5 @@ $ python3 manage.py runserver
 
 # uwsgiとの接続
 ```sh
-$ sudo pip3 install uwsgi
-pipenvでないことに注意
+$ pipenv install uwsgi
 ```
