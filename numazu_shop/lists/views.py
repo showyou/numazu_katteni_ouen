@@ -10,6 +10,11 @@ def index(request):
     return render(request, 'lists/index.html', {'latest_article_list': latest_article_list, 'shops': shops })
 
 
+class ArticleListView(generic.ListView):
+    model = Article
+    template_name = 'lists/article_list.html'
+
+
 class ArticleView(generic.DetailView):
     model = Article
     template_name = 'lists/article.html'
