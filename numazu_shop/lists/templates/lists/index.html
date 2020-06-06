@@ -7,8 +7,9 @@
 {% block content %}
     <h1 class="mb-4">情報サイト</h1>
     <h2 class="mb-3">新着情報</h2>
+    <a href="{% url 'article_list' %}">全件表示</a>
 {% if latest_article_list %}
-    
+
     {% for article in latest_article_list %}
     <div class="card mb-3">
 
@@ -16,14 +17,14 @@
     <div class="card-body">
 	<a href="{% url 'article' article.id %}">{{ article.text | truncatechars:30 }}</a>
     </div>
-    {% endfor %}
     </div>
+    {% endfor %}
+    
 {% else %}
     <div class="card mb-3">
         記事はありません。
     </div>
 {% endif %}
-    </div>
 
     <div class="card mb-3">
     <h3 class="card-title">お店リスト</h3>

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}通販の情報全件{% endblock %}
+{% block description %}通販の情報リスト
+{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">情報サイト</h1>
+    <h2 class="mb-3">全件情報</h2>
+{% if object_list %}
+    {% for article in object_list %}
+    <div class="card mb-3">
+    {{ article.pub_date }} <img src="{{ article.image_url1 }}" width='100' height='100' />
+    <div class="card-body">
+	<a href="{% url 'article' article.id %}">{{ article.text | truncatechars:30 }}</a>
+    </div>
+    </div>
+    {% endfor %}
+    
+{% else %}
+    <div class="card mb-3">
+        記事はありません。
+    </div>
+{% endif %}
+    <div class="link"><a href="{% url 'index' %}">目次に戻る</a></div>
+{% endblock %}
